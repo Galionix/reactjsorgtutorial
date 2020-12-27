@@ -4,14 +4,17 @@ import "./index.scss";
 
 class Square extends React.Component {
   render() {
+    const {value='d',
+    func=()=>{
+      alert('default')
+    }
+  } = this.props
     return (
       <button
         className="square"
-        onClick={function () {
-          alert("клик");
-        }}
+        onClick={func}
       >
-        {this.props.value}
+      {value}
       </button>
     );
   }
@@ -20,9 +23,9 @@ class Square extends React.Component {
 class Board extends React.Component {
   renderSquare(i) {
     if (i === 3)
-      return <Square value={10} />;
+      return <Square value={10} func={()=>{alert('hi')}}/>;
       
-    return <Square value={i+1} />;
+    return <Square  />;
   }
 
   render() {
